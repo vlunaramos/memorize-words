@@ -1,0 +1,111 @@
+<html>
+
+<body>
+
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"></script>
+  </head>
+
+  <style>
+    span,
+    label {
+      margin-right: 5px;
+
+    }
+
+    .input-field {
+      margin-right: 5px;
+      max-width: 70px;
+      max-height: 20px;
+    }
+
+    ;
+  </style>
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Logo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Link</a></li>
+              <li><a class="dropdown-item" href="#">Another link</a></li>
+              <li><a class="dropdown-item" href="#">A third link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="p-5 ms-2 me-2 my-2 bg-info bg-lighten-xs text-white bg-cyan"></div>
+
+  <div class="container mt-5">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
+          role="tab" aria-controls="nav-home" aria-selected="true">Words for each gap</button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
+          role="tab" aria-controls="nav-profile" aria-selected="false">Memorizing Words</button>
+        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
+          role="tab" aria-controls="nav-contact" aria-selected="false">Cards Memory</button>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <h3 class="my-4">Paste your text and generate the gaps</h3>
+        <textarea class="form-control my-3" style="border-style: solid; border-color: rgb(191, 172, 226);"" name="paragraph" id="paragraph" onkeyup="countWords()" cols="30"
+          rows="10">There are many things I usually do on the weekends but I always spend time with my family. On Saturdays I work in the mornings from 8.00 a.m. to noon. After that I have lunch with my family in a restaurant. In the afternoon My family and me go shopping for groceries at Tottus or Metro supermarket. In the evening We usually watch movies at home. I prefer science fiction movies but my kids like cartoons or comedies. After that I usually do the laundry and my wife checks the school homework.</textarea>
+        <div class="row">
+          <div class="col">
+            <p>Number of words</p>
+            <input class="form-control" type="number" id="totalwords" readonly />
+          </div>
+          <div class="col">
+            <p>Number of words to take for random sort</p>
+            <input class="form-control" type="number" id="numWordsToProcess" value="5" />
+          </div>
+          <div class="col">
+            <button class="btn text-white" style="background-color: rgb(170, 150, 218)" id="action" onclick="randomWords()">random</button>
+            <button class="btn text-white" style="background-color: rgb(170, 150, 218)" id="generateTest" onclick="generateTest()">Generate Test</button>
+          </div>
+
+        </div>
+        <div class="d-flex flex-wrap mt-2 p-2 rounded-3" id="displayWords"
+          style="border-style: solid; border-color: rgb(191, 172, 226); background-color: rgb(235, 199, 230);"></div>
+        <div class="mt-2 p-2 rounded-3" id="formSeccion" style="border-style: solid; border-color: rgb(191, 172, 226)">
+        </div>
+        <p id="totalScore">Your Score:0</p>
+      </div>
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+    </div>
+
+
+
+
+
+    <script src="script.js"></script>
+  </div>
+
+</body>
+
+</html>
