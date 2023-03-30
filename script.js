@@ -81,7 +81,8 @@ function checkAnswer() {
   let correctAnswer = 0;
   let div = document.getElementById('testForm');
   let span = div.getElementsByTagName('input');
-
+  const player = document.querySelector("lottie-player");
+  player.stop();
   for (let data of span) {
     if (data.value == data.getAttribute('answer')) {
       document.getElementById(data.id).style.color = "#008000";
@@ -92,6 +93,9 @@ function checkAnswer() {
   }
   score = (correctAnswer / span.length) * 10;
   document.getElementById('totalScore').innerHTML = 'Your score was ' + score;
+  if (score >= 8) {
+    player.play();
+  }
 }
 
 function paragraphHide() {
@@ -103,6 +107,12 @@ function paragraphHide() {
     paragraph.hidden = false;
 
   }
+}
+
+function underConstruction() {
+  const player = document.querySelector("lottie-under-construction-1");
+  const player2 = document.querySelector("lottie-under-construction-2");
+  
 }
 
 function init() {

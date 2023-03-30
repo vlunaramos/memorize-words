@@ -117,7 +117,7 @@
           style="border-style: solid; border-color: rgb(191, 172, 226); background-color: rgb(235, 199, 230);"></div>
         <div class="mt-2 p-2 rounded-3" id="formSection" style="border-style: solid; border-color: rgb(191, 172, 226)">
         </div>
-        <p id="totalScore">Your Score:0</p>
+
       </div>
       <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
       <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
@@ -130,13 +130,22 @@
 
           <!-- Modal Header -->
           <div class="modal-header">
-            <h4 class="modal-title">Modal Heading</h4>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
 
           <!-- Modal body -->
           <div class="modal-body">
-            Modal body..
+            <div class="container d-flex align-items-center justify-content-center">
+              <div
+                style="position: absolute; left: 0; right: 0; margin-left: auto; margin-right: auto; width: 100%; height: 400px;">
+                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                <lottie-player src="https://assets2.lottiefiles.com/private_files/lf30_f495l0im.json"
+                  background="transparent" speed="1" loop></lottie-player>
+              </div>
+              <img class="" src="mw-full-logo-violet.png" alt="" style="width:55%;height:auto;">
+            </div>
+
+            <h3 id="totalScore" class="container d-flex align-items-center justify-content-center mt-3">Score: 10</h3>
           </div>
 
           <!-- Modal footer -->
@@ -147,18 +156,15 @@
         </div>
       </div>
     </div>
-
-
-
-
-    <script src="script.js"></script>
   </div>
+
   <div class="mt-5 p-4 bg-white text-red text-center">
-    <img src="mw-full-logo-violet.png" alt="" class="img-responsive">
-    <p>Power by Inventif </p>
+    <img class="" src="inventif-full-logo.png" alt="" style="width:10%;">
+    <p class="mt-3">Power by Inventif </p>
+  </div>
   </div>
 
-
+  <script src="script.js"></script>
 </body>
 
 </html>
