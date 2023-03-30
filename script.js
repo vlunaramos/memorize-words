@@ -120,6 +120,8 @@ function paragraphHide() {
 
   if (paragraph.hidden === false) {
     paragraph.hidden = true;
+    headerInstruction.className = '';
+    headerInstruction.innerText = 'Press "Show Text" to display the text';
   } else {
     paragraph.hidden = false;
     headerInstruction.className = 'h4';
