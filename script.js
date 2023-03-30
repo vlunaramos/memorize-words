@@ -1,4 +1,5 @@
 var listWords = [];
+var paragraphText = "";
 
 function getWords() {
   return document.getElementById("paragraph").value.trim().split(/\s+/);
@@ -8,10 +9,21 @@ function countWords() {
   return getWords().length;
 }
 
+function paragraphOnFocusOut() {
+  document.getElementById("totalwords").value = countWords();
+  let paragraphCurrentText = document.getElementById("paragraph").value;
+
+  if (paragraphText != paragraphCurrentText && paragraphCurrentText != "") {
+    console.log("entrando a condicion");
+    paragraphText = paragraphCurrentText;
+    randomWords();
+  }
+
+}
+
 function randomWords() {
   listWords = [];
   numberOfWords = document.getElementById("numWordsToProcess").value;
-  console.log("Number of words:", numberOfWords, 'total array length:', getWords().length);
   if (numberOfWords < getWords().length) {
     while (listWords.length < numberOfWords) {
       let n = randomIntFromInterval(1, countWords() - 1)
@@ -32,7 +44,7 @@ function randomIntFromInterval(min, max) { // min and max included
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-function displayWords(words = "testing") {
+function displayWords() {
   let display = document.getElementById('displayWords');
   let toInner = "";
   let allWords = getWords();
@@ -44,6 +56,10 @@ function displayWords(words = "testing") {
 
 function generateTest() {
   document.getElementById('paragraph').hidden = true;
+  const headerInstruction = document.getElementById('headerInstruction');
+  headerInstruction.className = '';
+  headerInstruction.innerText = 'Press "Show Text" to display the text';
+
   let display = document.getElementById('formSection');
   display.hidden = false;
   display.innerHTML = "";
@@ -68,7 +84,6 @@ function generateTest() {
 }
 
 function selectedWord(id) {
-  console.log('selectedWord', id);
   let spanElement = document.getElementById('span_' + id);
   let inputElement = document.getElementById('input_' + id);
   if (inputElement.value == inputElement.getAttribute('answer')) {
@@ -100,25 +115,23 @@ function checkAnswer() {
 
 function paragraphHide() {
   let paragraph = document.getElementById('paragraph');
+  const headerInstruction = document.getElementById('headerInstruction');
+
 
   if (paragraph.hidden === false) {
     paragraph.hidden = true;
   } else {
     paragraph.hidden = false;
-
+    headerInstruction.className = 'h4';
+    headerInstruction.innerText = 'Paste your text and generate the gaps';
   }
 }
 
-function underConstruction() {
-  const player = document.querySelector("lottie-under-construction-1");
-  const player2 = document.querySelector("lottie-under-construction-2");
-  
-}
-
 function init() {
-  document.getElementById("totalwords").value = countWords();
-  randomWords();
-  displayWords("testing");
+  paragraphOnFocusOut();
+  let paragraph = document.getElementById('paragraph');
+  paragraph.value = "The Hare & the Tortoise\nA Hare was making fun of the Tortoise one day for being so slow.\n\"Do you ever get anywhere?\"he asked with a mocking laugh.\n\n\"Yes,\" replied the Tortoise, \"and I get there sooner than you think. I'll run you a race and prove it.\"\n\nThe Hare was much amused at the idea of running a race with the Tortoise, but for the fun of the thing he agreed. So the Fox, who had consented to act as judge, marked the distance and started the runners off.\n\nThe Hare was soon far out of sight, and to make the Tortoise feel very deeply how ridiculous it was for him to try a race with a Hare, he lay down beside the course to take a nap until the Tortoise should catch up.";
+  paragraphOnFocusOut();
   document.getElementById("formSection").hidden = true;
 }
 

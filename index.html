@@ -40,7 +40,7 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <!--  <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
           <li class="nav-item">
@@ -56,7 +56,7 @@
               <li><a class="dropdown-item" href="#">Another link</a></li>
               <li><a class="dropdown-item" href="#">A third link</a></li>
             </ul>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -77,10 +77,10 @@
       <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
         <div class="row my-3">
-          <div class="col-sm-6">
-            <h4 class="float-start">Paste your text and generate the gaps</h4>
+          <div class="col-sm-9">
+            <p class="h5" id="headerInstruction" class="float-start">Paste your text and generate the gaps</hp>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-3">
             <button class="btn float-end" style="border-style: solid; border-color: rgba(231,43,117,255);"
               onclick="paragraphHide()">Show Text</button>
           </div>
@@ -88,9 +88,8 @@
 
         </div>
 
-        <textarea class="form-control my-3" style="border-style: solid; border-color: rgb(191, 172, 226);"" name="
-          paragraph" id="paragraph" onkeyup="countWords()" cols="30"
-          rows="10">There are many things I usually do on the weekends but I always spend time with my family. On Saturdays I work in the mornings from 8.00 a.m. to noon. After that I have lunch with my family in a restaurant. In the afternoon My family and me go shopping for groceries at Tottus or Metro supermarket. In the evening We usually watch movies at home. I prefer science fiction movies but my kids like cartoons or comedies. After that I usually do the laundry and my wife checks the school homework.</textarea>
+        <textarea class="form-control my-3" style="border-style: solid; border-color: rgb(191, 172, 226);" name="
+          paragraph" id="paragraph" onfocusout="paragraphOnFocusOut()" cols="30" rows="10"></textarea>
         <div class="row align-items-end">
           <div class="col-sm-2">
             <p>Total Words</p>
@@ -98,7 +97,7 @@
           </div>
           <div class="col-sm-3">
             <p>Words To Take Random Sort</p>
-            <input class="form-control" type="number" id="numWordsToProcess" value="5" />
+            <input class="form-control" type="number" id="numWordsToProcess" min="1" value="5" />
           </div>
           <div class="col">
             <div class="d-flex justify-content-end">
@@ -119,8 +118,22 @@
         </div>
 
       </div>
-      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="container d-flex align-items-center justify-content-center">
+          <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+          <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_y9czxcb9.json" background="transparent"
+            speed="1" style="width: 600px; height: 600px;" loop autoplay></lottie-player> -->
+          <p class="mt-5">Under development</p>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <div class="container d-flex align-items-center justify-content-center">
+          <!--  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_y9czxcb9.json" background="transparent"
+          speed="1" style="width: 600px; height: 600px;" loop autoplay></lottie-player> -->
+          <p class="mt-5">Under development</p>
+        </div>
+      </div>
     </div>
 
     <!-- The Modal -->
@@ -139,7 +152,7 @@
               <div
                 style="position: absolute; left: 0; right: 0; margin-left: auto; margin-right: auto; width: 100%; height: 400px;">
                 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-                <lottie-player src="https://assets2.lottiefiles.com/private_files/lf30_f495l0im.json"
+                <lottie-player id="confetti" src="https://assets2.lottiefiles.com/private_files/lf30_f495l0im.json"
                   background="transparent" speed="1" loop></lottie-player>
               </div>
               <img class="" src="mw-full-logo-violet.png" alt="" style="width:55%;height:auto;">
