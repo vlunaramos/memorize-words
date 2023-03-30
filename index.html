@@ -81,7 +81,8 @@
             <h4 class="float-start">Paste your text and generate the gaps</h4>
           </div>
           <div class="col-sm-6">
-            <button class="btn float-end" style="border-style: solid; border-color: rgba(231,43,117,255);" onclick="paragraphHide()">Show Text</button>
+            <button class="btn float-end" style="border-style: solid; border-color: rgba(231,43,117,255);"
+              onclick="paragraphHide()">Show Text</button>
           </div>
 
 
@@ -90,26 +91,31 @@
         <textarea class="form-control my-3" style="border-style: solid; border-color: rgb(191, 172, 226);"" name="
           paragraph" id="paragraph" onkeyup="countWords()" cols="30"
           rows="10">There are many things I usually do on the weekends but I always spend time with my family. On Saturdays I work in the mornings from 8.00 a.m. to noon. After that I have lunch with my family in a restaurant. In the afternoon My family and me go shopping for groceries at Tottus or Metro supermarket. In the evening We usually watch movies at home. I prefer science fiction movies but my kids like cartoons or comedies. After that I usually do the laundry and my wife checks the school homework.</textarea>
-        <div class="row">
-          <div class="col">
-            <p>Number of words</p>
+        <div class="row align-items-end">
+          <div class="col-sm-2">
+            <p>Total Words</p>
             <input class="form-control" type="number" id="totalwords" readonly />
           </div>
-          <div class="col">
-            <p>Number of words to take for random sort</p>
+          <div class="col-sm-3">
+            <p>Words To Take Random Sort</p>
             <input class="form-control" type="number" id="numWordsToProcess" value="5" />
           </div>
           <div class="col">
-            <button class="btn text-white" style="background-color: rgb(170, 150, 218)" id="action"
-              onclick="randomWords()">random</button>
-            <button class="btn text-white" style="background-color: rgb(170, 150, 218)" id="generateTest"
-              onclick="generateTest()">Generate Test</button>
-          </div>
+            <div class="d-flex justify-content-end">
+              <div class="mt-2">
+                <button class="btn text-white" style="background-color: rgb(170, 150, 218)" id="action"
+                  onclick="randomWords()">random</button>
+                <button class="btn text-white" style="background-color: rgb(170, 150, 218)" id="generateTest"
+                  onclick="generateTest()">Generate Test</button>
+              </div>
 
+            </div>
+
+          </div>
         </div>
         <div class="d-flex flex-wrap mt-2 p-2 rounded-3" id="displayWords"
           style="border-style: solid; border-color: rgb(191, 172, 226); background-color: rgb(235, 199, 230);"></div>
-        <div class="mt-2 p-2 rounded-3" id="formSeccion" style="border-style: solid; border-color: rgb(191, 172, 226)">
+        <div class="mt-2 p-2 rounded-3" id="formSection" style="border-style: solid; border-color: rgb(191, 172, 226)">
         </div>
         <p id="totalScore">Your Score:0</p>
       </div>
@@ -117,6 +123,30 @@
       <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
     </div>
 
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Modal Heading</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            Modal body..
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
 
 
 

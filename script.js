@@ -44,7 +44,8 @@ function displayWords(words = "testing") {
 
 function generateTest() {
   document.getElementById('paragraph').hidden = true;
-  let display = document.getElementById('formSeccion');
+  let display = document.getElementById('formSection');
+  display.hidden = false;
   display.innerHTML = "";
   let toInner = "<form id='testForm'><p>";
   let allWords = getWords();
@@ -63,7 +64,7 @@ function generateTest() {
   for (let y in arrayForTest) {
     toInner += arrayForTest[y];
   }
-  display.innerHTML = toInner + '</p><button type="button" class="btn text-white" style="background-color: rgb(170, 150, 218)" onclick="checkAnswer()">Check Answer</button></form>';
+  display.innerHTML = toInner + '</p><button type="button" class="btn text-white" style="background-color: rgb(170, 150, 218)" data-bs-toggle="modal" data-bs-target="#myModal" onclick="checkAnswer()">Check Answer</button></form>';
 }
 
 function selectedWord(id) {
@@ -108,6 +109,7 @@ function init() {
   document.getElementById("totalwords").value = countWords();
   randomWords();
   displayWords("testing");
+  document.getElementById("formSection").hidden = true;
 }
 
 init();
