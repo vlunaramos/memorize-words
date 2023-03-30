@@ -43,7 +43,7 @@ function displayWords(words = "testing") {
 }
 
 function generateTest() {
-
+  document.getElementById('paragraph').hidden = true;
   let display = document.getElementById('formSeccion');
   display.innerHTML = "";
   let toInner = "<form id='testForm'><p>";
@@ -91,6 +91,17 @@ function checkAnswer() {
   }
   score = (correctAnswer / span.length) * 10;
   document.getElementById('totalScore').innerHTML = 'Your score was ' + score;
+}
+
+function paragraphHide() {
+  let paragraph = document.getElementById('paragraph');
+
+  if (paragraph.hidden === false) {
+    paragraph.hidden = true;
+  } else {
+    paragraph.hidden = false;
+
+  }
 }
 
 function init() {

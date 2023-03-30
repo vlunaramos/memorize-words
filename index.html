@@ -23,12 +23,18 @@
       max-height: 20px;
     }
 
+    .nav-custom {
+      background-color: rgb(142, 167, 233)
+    }
+
     ;
   </style>
 
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <nav class="navbar navbar-expand-sm">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="#">
+        <img src="mw-logo-violet.png" alt="" width="60" height="60" class="d-inline-block align-text-top">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -46,7 +52,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Link</a></li>
+              <li><a class="dropdown-item" href="#">HOME</a></li>
               <li><a class="dropdown-item" href="#">Another link</a></li>
               <li><a class="dropdown-item" href="#">A third link</a></li>
             </ul>
@@ -56,8 +62,6 @@
     </div>
   </nav>
 
-  <div class="p-5 ms-2 me-2 my-2 bg-info bg-lighten-xs text-white bg-cyan"></div>
-
   <div class="container mt-5">
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -66,13 +70,25 @@
         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
           role="tab" aria-controls="nav-profile" aria-selected="false">Memorizing Words</button>
         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
-          role="tab" aria-controls="nav-contact" aria-selected="false">Cards Memory</button>
+          role="tab" aria-controls="nav-contact" aria-selected="false">Flashcards</button>
       </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        <h3 class="my-4">Paste your text and generate the gaps</h3>
-        <textarea class="form-control my-3" style="border-style: solid; border-color: rgb(191, 172, 226);"" name="paragraph" id="paragraph" onkeyup="countWords()" cols="30"
+
+        <div class="row my-3">
+          <div class="col-sm-6">
+            <h4 class="float-start">Paste your text and generate the gaps</h4>
+          </div>
+          <div class="col-sm-6">
+            <button class="btn float-end" style="border-style: solid; border-color: rgba(231,43,117,255);" onclick="paragraphHide()">Show Text</button>
+          </div>
+
+
+        </div>
+
+        <textarea class="form-control my-3" style="border-style: solid; border-color: rgb(191, 172, 226);"" name="
+          paragraph" id="paragraph" onkeyup="countWords()" cols="30"
           rows="10">There are many things I usually do on the weekends but I always spend time with my family. On Saturdays I work in the mornings from 8.00 a.m. to noon. After that I have lunch with my family in a restaurant. In the afternoon My family and me go shopping for groceries at Tottus or Metro supermarket. In the evening We usually watch movies at home. I prefer science fiction movies but my kids like cartoons or comedies. After that I usually do the laundry and my wife checks the school homework.</textarea>
         <div class="row">
           <div class="col">
@@ -84,8 +100,10 @@
             <input class="form-control" type="number" id="numWordsToProcess" value="5" />
           </div>
           <div class="col">
-            <button class="btn text-white" style="background-color: rgb(170, 150, 218)" id="action" onclick="randomWords()">random</button>
-            <button class="btn text-white" style="background-color: rgb(170, 150, 218)" id="generateTest" onclick="generateTest()">Generate Test</button>
+            <button class="btn text-white" style="background-color: rgb(170, 150, 218)" id="action"
+              onclick="randomWords()">random</button>
+            <button class="btn text-white" style="background-color: rgb(170, 150, 218)" id="generateTest"
+              onclick="generateTest()">Generate Test</button>
           </div>
 
         </div>
@@ -105,6 +123,11 @@
 
     <script src="script.js"></script>
   </div>
+  <div class="mt-5 p-4 bg-white text-red text-center">
+    <img src="mw-full-logo-violet.png" alt="" class="img-responsive">
+    <p>Power by Inventif </p>
+  </div>
+
 
 </body>
 
