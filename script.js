@@ -31,7 +31,6 @@ function processedArray(arrayInicial) {
 }
 
 
-
 function getWords() {
   let arr = stringToArray(document.getElementById("paragraph").value);
   return processedArray(arr);
@@ -105,7 +104,14 @@ function generateTest() {
     for (let x = 0; x < listWords.length; x++) {
       if (i == listWords[x]) {
         arrayForTest.pop();
-        arrayForTest.push(`<input id="input_${listWords[x]}" class="input-field ms-1" answer="${allWords[listWords[x]]}" onfocusout="selectedWord(${listWords[x]})" autocomplete="off"/>`)
+        let UpperOrNotUpper ="";
+        if (allWords[listWords[x]].charAt(0) === allWords[listWords[x]].charAt(0).toUpperCase()) {
+          UpperOrNotUpper= "text-capitalize";
+        } else {
+          //console.log("La palabra comienza con minúscula");
+          UpperOrNotUpper= "text-lowercase";
+        }
+        arrayForTest.push(`<input id="input_${listWords[x]}" class="input-field ms-1 ${UpperOrNotUpper}" answer="${allWords[listWords[x]]}" onfocusout="selectedWord(${listWords[x]})" autocomplete="off"/>`)
       }
     }
 
