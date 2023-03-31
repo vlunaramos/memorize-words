@@ -1,8 +1,40 @@
 var listWords = [];
 var paragraphText = "";
 
+function stringToArray(str) {
+  // Convertir el string en un array de caracteres utilizando el método split
+  let array = str.split("");
+  return array;
+}
+
+function processedArray(arrayInicial) {
+  let nuevoArray = [];
+  let palabra = "";
+
+  for (let i = 0; i < arrayInicial.length; i++) {
+    const caracter = arrayInicial[i].toUpperCase();
+
+    if (isNaN(caracter.charCodeAt(0)) || caracter.charCodeAt(0) < 65 || caracter.charCodeAt(0) > 90) {
+      if (palabra !== "") {
+        nuevoArray.push(palabra);
+        palabra = "";
+      }
+      nuevoArray.push(arrayInicial[i]);
+    } else {
+      palabra += arrayInicial[i];
+      if (i === arrayInicial.length - 1) {
+        nuevoArray.push(palabra);
+      }
+    }
+  }
+  return nuevoArray;
+}
+
+
+
 function getWords() {
-  return document.getElementById("paragraph").value.trim().split(/\s+/);
+  let arr = stringToArray(document.getElementById("paragraph").value);
+  return processedArray(arr);
 }
 
 function countWords() {
@@ -22,11 +54,13 @@ function paragraphOnFocusOut() {
 
 function randomWords() {
   listWords = [];
+  let allWords = getWords();
   numberOfWords = document.getElementById("numWordsToProcess").value;
+
   if (numberOfWords < getWords().length) {
     while (listWords.length < numberOfWords) {
       let n = randomIntFromInterval(1, countWords() - 1)
-      if (!listWords.some(element => element == n)) {
+      if (allWords[n] !== "" && allWords[n] != " " && allWords[n] != '"' && allWords[n] != "." && allWords[n] != "." && allWords[n] != "," && allWords[n] != "\n" && allWords[n] != "?" && allWords[n] != "¿" && allWords[n] != "&" && allWords[n] != "'") {
         listWords.push(n);
       }
     }
