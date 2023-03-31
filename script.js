@@ -14,7 +14,6 @@ function paragraphOnFocusOut() {
   let paragraphCurrentText = document.getElementById("paragraph").value;
 
   if (paragraphText != paragraphCurrentText && paragraphCurrentText != "") {
-    console.log("entrando a condicion");
     paragraphText = paragraphCurrentText;
     randomWords();
   }
@@ -80,7 +79,7 @@ function generateTest() {
   for (let y in arrayForTest) {
     toInner += arrayForTest[y];
   }
-  display.innerHTML = toInner + '</p><button type="button" class="btn text-white" style="background-color: rgb(170, 150, 218)" data-bs-toggle="modal" data-bs-target="#myModal" onclick="checkAnswer()">Check Answer</button></form>';
+  display.innerHTML = toInner + '</p><button type="button" class="btn text-white" style="background-color: rgb(170, 150, 218)" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="checkAnswer()">Check Answer</button></form>';
 }
 
 function selectedWord(id) {
@@ -97,7 +96,7 @@ function checkAnswer() {
   let div = document.getElementById('testForm');
   let span = div.getElementsByTagName('input');
   const player = document.querySelector("lottie-player");
-  player.stop();
+  //player.stop();
   for (let data of span) {
     if (data.value == data.getAttribute('answer')) {
       document.getElementById(data.id).style.color = "#008000";
