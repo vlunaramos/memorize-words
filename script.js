@@ -125,7 +125,6 @@ function generateTest() {
 function selectedWord(id) {
   let spanElement = document.getElementById('span_' + id);
   let inputElement = document.getElementById('input_' + id);
-  alert(inputElement.value.toLowerCase());
   if (inputElement.value.toLowerCase() == inputElement.getAttribute('answer').toLowerCase()) {
     spanElement.className = "rounded-3 p-2 mt-2 text-black bg-light";
   }
