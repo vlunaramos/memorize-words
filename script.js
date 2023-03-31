@@ -60,7 +60,9 @@ function randomWords() {
     while (listWords.length < numberOfWords) {
       let n = randomIntFromInterval(1, countWords() - 1)
       if ( /^[a-zA-Z]+$/.test(allWords[n]) && allWords[n] != "LL" && allWords[n] != "ll" && allWords[n] != "\n") {
-        listWords.push(n);
+        if (!listWords.some(element => element == n)) {
+          listWords.push(n);
+        }
       }
     }
   } else
@@ -69,6 +71,7 @@ function randomWords() {
         listWords.push(w);
       }
     } else alert("Don't exceed the maximum number of words");
+    console.log(listWords);
   displayWords()
 }
 
