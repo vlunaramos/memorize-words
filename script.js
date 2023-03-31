@@ -125,7 +125,7 @@ function generateTest() {
 function selectedWord(id) {
   let spanElement = document.getElementById('span_' + id);
   let inputElement = document.getElementById('input_' + id);
-  if (inputElement.value.toLowerCase() == inputElement.getAttribute('answer').toLowerCase()) {
+  if (inputElement.value.toLowerCase().trim() == inputElement.getAttribute('answer').toLowerCase()) {
     spanElement.className = "rounded-3 p-2 mt-2 text-black bg-light";
   }
 }
@@ -138,7 +138,7 @@ function checkAnswer() {
   const player = document.querySelector("lottie-player");
   //player.stop();
   for (let data of span) {
-    if (data.value == data.getAttribute('answer')) {
+    if (data.value.toLowerCase().trim() == data.getAttribute('answer').toLowerCase()) {
       document.getElementById(data.id).style.color = "#008000";
       correctAnswer++;
     } else {
