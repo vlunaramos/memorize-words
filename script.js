@@ -104,12 +104,12 @@ function generateTest() {
     for (let x = 0; x < listWords.length; x++) {
       if (i == listWords[x]) {
         arrayForTest.pop();
-        let UpperOrNotUpper ="";
+        let UpperOrNotUpper = "";
         if (allWords[listWords[x]].charAt(0) === allWords[listWords[x]].charAt(0).toUpperCase()) {
-          UpperOrNotUpper= "text-capitalize";
+          UpperOrNotUpper = "text-capitalize";
         } else {
           //console.log("La palabra comienza con minúscula");
-          UpperOrNotUpper= "text-lowercase";
+          UpperOrNotUpper = "text-lowercase";
         }
         arrayForTest.push(`<input id="input_${listWords[x]}" class="input-field ms-1 ${UpperOrNotUpper}" answer="${allWords[listWords[x]]}" onfocusout="selectedWord(${listWords[x]})" autocomplete="off"/>`)
       }
@@ -125,7 +125,8 @@ function generateTest() {
 function selectedWord(id) {
   let spanElement = document.getElementById('span_' + id);
   let inputElement = document.getElementById('input_' + id);
-  if (inputElement.value == inputElement.getAttribute('answer')) {
+  alert(inputElement.value.toLowerCase());
+  if (inputElement.value.toLowerCase() == inputElement.getAttribute('answer').toLowerCase()) {
     spanElement.className = "rounded-3 p-2 mt-2 text-black bg-light";
   }
 }
