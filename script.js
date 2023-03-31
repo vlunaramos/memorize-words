@@ -59,7 +59,7 @@ function randomWords() {
   if (numberOfWords < getWords().length) {
     while (listWords.length < numberOfWords) {
       let n = randomIntFromInterval(1, countWords() - 1)
-      if (allWords[n] !== "" && allWords[n] != " " && allWords[n] != '"' && allWords[n] != "." && allWords[n] != "." && allWords[n] != "," && allWords[n] != "\n" && allWords[n] != "?" && allWords[n] != "¿" && allWords[n] != "&" && allWords[n] != "'" && allWords[n] != "LL" && allWords[n] != "ll") {
+      if ( /^[a-zA-Z]+$/.test(allWords[n]) && allWords[n] != "LL" && allWords[n] != "ll" && allWords[n] != "\n") {
         listWords.push(n);
       }
     }
