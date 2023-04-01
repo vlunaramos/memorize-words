@@ -51,15 +51,15 @@ function countWords() {
 }
 
 function paragraphOnFocusOut() {
-  document.getElementById("totalwords").value = countWords();
   let paragraphCurrentText = document.getElementById("paragraph").value;
 
-  if (paragraphText != paragraphCurrentText && paragraphCurrentText != "") {
+  if (paragraphText != paragraphCurrentText) {
     paragraphText = paragraphCurrentText;
     words = [];
+
     randomWords();
   }
-
+ document.getElementById("totalwords").value = countWords();
 }
 
 function randomWords() {
