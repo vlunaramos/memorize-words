@@ -225,8 +225,6 @@ function init() {
     event.dataTransfer.setData("text", event.target.innerText);
   });
 
-
-
 }
 
 init();
