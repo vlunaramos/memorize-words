@@ -6,11 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    .animated-button {
+  animation-name: move-button;
+  animation-duration: 2s;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes move-button {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(5px);
+  }
+}
+
+
+.jump-span {
+  animation: jump 0.3s ease-in-out infinite;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+
+</style>
 <body>
     <span class="draggable" draggable="true">Valor 1</span>
 <span class="draggable" draggable="true">Valor 2</span>
 <span class="draggable" draggable="true">Valor 3</span>
 <input type="text" id="myInput">
+
+<button class="animated-button">Haz clic aquí</button>
+
+<button class="jump-span">Haz clic aquí</button>
+
 
 <script>
     var input = document.getElementById("myInput");

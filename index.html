@@ -40,6 +40,24 @@
         max-width: 150px;
       }
     }
+
+    .jump-span {
+      animation: jump 0.3s ease-in-out infinite;
+    }
+
+    @keyframes jump {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-2px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
   </style>
 
   <nav class="navbar navbar-expand-sm">
@@ -161,8 +179,8 @@
                 src="https://assets2.lottiefiles.com/private_files/lf30_f495l0im.json" background="transparent"
                 speed="1" loop></lottie-player>
               <img src="mw-full-logo-violet.png" alt="" style="width:55%;height:auto;">
-             
-            </div> 
+
+            </div>
             <h3 class="col mt-3" id="totalScore" align="center">Score: 0</h3>
           </div>
           <div class=" modal-footer">

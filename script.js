@@ -93,7 +93,7 @@ function displayWords() {
   let toInner = "";
   let allWords = getWords();
   for (let i = 0; i < listWords.length; i++) {
-    toInner += `<span class="rounded-3 p-2 mt-2 mb-2 text-white" draggable="true" style="background-color: rgb(170, 150, 218)" id="span_${listWords[i]}">${allWords[listWords[i]]}</span>`;
+    toInner += `<span class="rounded-3 p-2 mt-2 mb-2 text-white jump-span" draggable="true" style="background-color: rgb(170, 150, 218)" id="span_${listWords[i]}">${allWords[listWords[i]]}</span>`;
   }
   display.innerHTML = toInner;
 }
