@@ -93,7 +93,7 @@ function displayWords() {
   let toInner = "";
   let allWords = getWords();
   for (let i = 0; i < listWords.length; i++) {
-    toInner += `<span class="rounded-3 p-2 mt-2 mb-2 text-white jump-span" draggable="true" style="background-color: rgb(170, 150, 218)" id="span_${listWords[i]}">${allWords[listWords[i]]}</span>`;
+    toInner += `<span class="rounded-3 p-2 mt-2 mb-2 me-2 text-white grow-shake-slow-button" draggable="true" style="background-color: rgb(170, 150, 218)" id="span_${listWords[i]}">${allWords[listWords[i]]}</span>`;
   }
   display.innerHTML = toInner;
 }
@@ -138,7 +138,7 @@ function selectedWord(id) {
   let spanElement = document.getElementById('span_' + id);
   let inputElement = document.getElementById('input_' + id);
   if (inputElement.value.toLowerCase().trim() == inputElement.getAttribute('answer').toLowerCase()) {
-    spanElement.className = "rounded-3 p-2 mt-2 text-black bg-light";
+    spanElement.className = "rounded-3 p-2 mt-2 mb-2 me-2 text-black bg-light";
   }
 }
 

@@ -58,6 +58,29 @@
         transform: translateY(0);
       }
     }
+
+    .grow-shake-slow-button {
+  animation: grow-shake-slow 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+  transform-origin: center;
+}
+
+@keyframes grow-shake-slow {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.05) rotate(3deg);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.05) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
   </style>
 
   <nav class="navbar navbar-expand-sm">
@@ -126,7 +149,7 @@
           </div>
           <div class="col-sm-3">
             <p>Words To Take Random Sort</p>
-            <input class="form-control" type="number" id="numWordsToProcess" min="1" value="5" />
+            <input class="form-control" type="number" id="numWordsToProcess" pattern="[0-9]+" min="1" value="5" required/>
           </div>
           <div class="col">
             <div class="d-flex justify-content-end">

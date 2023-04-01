@@ -64,6 +64,54 @@
 }
 
 
+.grow-shake-button {
+  animation: grow-shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+  transform-origin: center;
+}
+
+@keyframes grow-shake {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+.grow-shake-slow-button {
+  animation: grow-shake-slow 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+  transform-origin: center;
+}
+
+@keyframes grow-shake-slow {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.05) rotate(3deg);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.05) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
 </style>
 <body>
     <span class="draggable" draggable="true">Valor 1</span>
@@ -74,6 +122,11 @@
 <button class="animated-button">Haz clic aquí</button>
 
 <button class="jump-span">Haz clic aquí</button>
+
+<button class="grow-shake-button">Haz clic aquí</button>
+
+<button class="grow-shake-slow-button">Haz clic aquí</button>
+
 
 <div class="wave-container">
     <button class="wave-button">Botón 1</button>
