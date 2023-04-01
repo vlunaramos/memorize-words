@@ -1,5 +1,7 @@
 var listWords = [];
 var paragraphText = "";
+var totalWords = 0;
+var words = [];
 
 function stringToArray(str) {
   // Convertir el string en un array de caracteres utilizando el método split
@@ -10,6 +12,7 @@ function stringToArray(str) {
 function processedArray(arrayInicial) {
   let nuevoArray = [];
   let palabra = "";
+  totalWords = 0;
 
   for (let i = 0; i < arrayInicial.length; i++) {
     const caracter = arrayInicial[i].toUpperCase();
@@ -18,26 +21,33 @@ function processedArray(arrayInicial) {
       if (palabra !== "") {
         nuevoArray.push(palabra);
         palabra = "";
+        totalWords++;
+
       }
       nuevoArray.push(arrayInicial[i]);
     } else {
       palabra += arrayInicial[i];
       if (i === arrayInicial.length - 1) {
         nuevoArray.push(palabra);
+        totalWords++;
       }
     }
   }
+
   return nuevoArray;
 }
 
 
 function getWords() {
-  let arr = stringToArray(document.getElementById("paragraph").value);
-  return processedArray(arr);
+  if (words.length == 0) {
+    var words2 = stringToArray(document.getElementById("paragraph").value);
+    words = processedArray(words2);
+  }
+  return words;
 }
 
 function countWords() {
-  return getWords().length;
+  return totalWords;
 }
 
 function paragraphOnFocusOut() {
@@ -46,6 +56,7 @@ function paragraphOnFocusOut() {
 
   if (paragraphText != paragraphCurrentText && paragraphCurrentText != "") {
     paragraphText = paragraphCurrentText;
+    words = [];
     randomWords();
   }
 
@@ -56,22 +67,20 @@ function randomWords() {
   let allWords = getWords();
   numberOfWords = document.getElementById("numWordsToProcess").value;
 
-  if (numberOfWords < getWords().length) {
-    while (listWords.length < numberOfWords) {
-      let n = randomIntFromInterval(1, countWords() - 1)
-      if ( /^[a-zA-Z]+$/.test(allWords[n]) && allWords[n] != "LL" && allWords[n] != "ll" && allWords[n] != "\n") {
+  if (numberOfWords <= countWords()) {
+
+    while (listWords.length <= numberOfWords - 1) {
+
+      let n = randomIntFromInterval(0, allWords.length - 1)
+
+      if (/^[a-zA-Z]+$/.test(allWords[n]) && allWords[n] != "LL" && allWords[n] != "ll" && allWords[n] != "\n" && allWords[n] != "  ") {
         if (!listWords.some(element => element == n)) {
           listWords.push(n);
         }
       }
     }
-  } else
-    if (numberOfWords == getWords().length) {
-      for (let w = 0; w <= getWords().length; w++) {
-        listWords.push(w);
-      }
-    } else alert("Don't exceed the maximum number of words");
-    console.log(listWords);
+  } else alert("Don't exceed the maximum number of words");
+
   displayWords()
 }
 
@@ -111,7 +120,6 @@ function generateTest() {
         if (allWords[listWords[x]].charAt(0) === allWords[listWords[x]].charAt(0).toUpperCase()) {
           UpperOrNotUpper = "text-capitalize";
         } else {
-          //console.log("La palabra comienza con minúscula");
           UpperOrNotUpper = "text-lowercase";
         }
         arrayForTest.push(`<input id="input_${listWords[x]}" class="input-field ms-1 ${UpperOrNotUpper}" answer="${allWords[listWords[x]]}" onfocusout="selectedWord(${listWords[x]})" autocomplete="off"/>`)
