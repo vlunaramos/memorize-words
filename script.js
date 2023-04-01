@@ -131,6 +131,7 @@ function generateTest() {
     toInner += arrayForTest[y];
   }
   display.innerHTML = toInner + '</p><button type="button" class="btn text-white" style="background-color: rgb(170, 150, 218)" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="checkAnswer()">Check Answer</button></form>';
+  addEventListenerDropToInput();
 }
 
 function selectedWord(id) {
@@ -179,7 +180,7 @@ function paragraphHide() {
   }
 }
 
-/* function draggable(input_id) {
+function draggable(input_id) {
   var input = document.getElementById(input_id);
 
   // Agregar un event listener para el evento 'dragover'
@@ -199,7 +200,7 @@ function paragraphHide() {
   })
 }
 
-function testing() {
+function addEventListenerDropToInput() {
   let element = document.getElementById("testForm");
   let arrayInput = element.getElementsByTagName("input");
 
@@ -208,9 +209,7 @@ function testing() {
     draggable(input.id);
   }
 
-} */
-
-
+}
 
 function init() {
   paragraphOnFocusOut();

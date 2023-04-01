@@ -41,6 +41,27 @@
   }
 }
 
+.wave-container {
+  display: flex;
+  justify-content: center;
+}
+
+.wave-button {
+  animation: wave 1s ease-in-out infinite;
+  margin: 10px;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 
 
 </style>
@@ -54,6 +75,11 @@
 
 <button class="jump-span">Haz clic aquí</button>
 
+<div class="wave-container">
+    <button class="wave-button">Botón 1</button>
+    <button class="wave-button">Botón 2</button>
+    <button class="wave-button">Botón 3</button>
+  </div>
 
 <script>
     var input = document.getElementById("myInput");
