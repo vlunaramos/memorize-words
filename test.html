@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span class="draggable" draggable="true">Valor 1</span>
+<span class="draggable" draggable="true">Valor 2</span>
+<span class="draggable" draggable="true">Valor 3</span>
+<input type="text" id="myInput">
+
+<script>
+    var input = document.getElementById("myInput");
+
+// Agregar un event listener para el evento 'dragstart'
+document.addEventListener("dragstart", function(event) {
+  // Establecer el elemento arrastrado como el elemento 'span' que se ha iniciado el arrastre
+  event.dataTransfer.setData("text", event.target.innerText);
+});
+
+// Agregar un event listener para el evento 'dragover'
+input.addEventListener("dragover", function(event) {
+  // Evitar el comportamiento predeterminado del navegador al arrastrar y soltar
+  event.preventDefault();
+});
+
+// Agregar un event listener para el evento 'drop'
+input.addEventListener("drop", function(event) {
+  // Evitar el comportamiento predeterminado del navegador al arrastrar y soltar
+  event.preventDefault();
+
+  // Obtener el valor del elemento arrastrado
+  var value = event.dataTransfer.getData("text");
+  this.value = value    
+
+});
+
+</script>
+</body>
+</html>
