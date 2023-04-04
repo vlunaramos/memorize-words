@@ -122,7 +122,7 @@ function generateTest() {
         } else {
           UpperOrNotUpper = "text-lowercase";
         }
-        arrayForTest.push(`<input id="input_${listWords[x]}" class="input-field ms-1 ${UpperOrNotUpper}" answer="${allWords[listWords[x]]}" onfocusout="selectedWord(${listWords[x]})" autocomplete="off"/>`)
+        arrayForTest.push(`<input id="input_${listWords[x]}" class="input-field ms-1 ${UpperOrNotUpper}" answer="${allWords[listWords[x]]}" onfocusout="selectedWord(${listWords[x]})" ondragenter="dragEnter(event)" autocomplete="off"/>`)
       }
     }
 
@@ -140,6 +140,11 @@ function selectedWord(id) {
   if (inputElement.value.toLowerCase().trim() == inputElement.getAttribute('answer').toLowerCase()) {
     spanElement.className = "rounded-3 p-2 mt-2 mb-2 me-2 text-black bg-light";
   }
+}
+
+function answerWordColumns(obj) {
+console.log(obj.value);
+
 }
 
 function checkAnswer() {
@@ -198,6 +203,7 @@ function draggable(input_id) {
     var value = event.dataTransfer.getData("text");
     this.value = value
   })
+
 }
 
 function addEventListenerDropToInput() {
@@ -211,13 +217,55 @@ function addEventListenerDropToInput() {
 
 }
 
+function startIrregularVerbs() {
+  let tableRow = document.getElementById("word-colum");
+  let bodyTable = document.getElementsByTagName('tbody')
+  bodyTable = bodyTable[0]
+
+  fetch('./irregular-verbs.json')
+    .then(response => response.json())
+    .then(data => {
+      data.verbs.forEach(function (verb, index) {
+        let row = document.createElement("tr");
+        let cell1 = document.createElement("td");
+        cell1.setAttribute("id", "infinitive_" + index);
+        let cell2 = document.createElement("td");
+        cell2.setAttribute("id", "past-simple_" + index);
+        let cell3 = document.createElement("td");
+        cell3.setAttribute("id", "past-participle_" + index);
+
+        cell1.innerHTML = verb.Base
+        cell2.innerHTML = verb['Past-simple'];
+        cell3.innerHTML = verb['Past-Participle'];
+        row.appendChild(cell1);
+        row.appendChild(cell2);
+        row.appendChild(cell3);
+        bodyTable.appendChild(row);
+      });
+    }
+    )
+    .catch(error => console.log(error));
+
+}
+
+function testWordColums() {
+  let table = document.getElementById("word-colum");
+  let rows = table.getElementsByTagName('tr')
+
+  for (let arr of rows) {
+    for (let i = 0; i < rows[0].children.length; i++) {
+      arr.children[i].innerHTML = `<input type='text' answer='${arr.children[i].innerHTML}' onfocusout="answerWordColumns(this)"  />`
+    }
+  }
+}
+
 function init() {
   paragraphOnFocusOut();
   let paragraph = document.getElementById('paragraph');
   paragraph.value = "The Hare & the Tortoise\nA Hare was making fun of the Tortoise one day for being so slow.\n\"Do you ever get anywhere?\" he asked with a mocking laugh.\n\n\"Yes,\" replied the Tortoise, \"and I get there sooner than you think. I'll run you a race and prove it.\"\n\nThe Hare was much amused at the idea of running a race with the Tortoise, but for the fun of the thing he agreed. So the Fox, who had consented to act as judge, marked the distance and started the runners off.\n\nThe Hare was soon far out of sight, and to make the Tortoise feel very deeply how ridiculous it was for him to try a race with a Hare, he lay down beside the course to take a nap until the Tortoise should catch up.";
   paragraphOnFocusOut();
   document.getElementById("formSection").hidden = true;
-
+  startIrregularVerbs();
   // Agregar un event listener para el evento 'dragstart'
   document.addEventListener("dragstart", function (event) {
     // Establecer el elemento arrastrado como el elemento 'span' que se ha iniciado el arrastre
@@ -227,3 +275,4 @@ function init() {
 }
 
 init();
+
