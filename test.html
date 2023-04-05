@@ -1,165 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <style>
-    .animated-button {
-  animation-name: move-button;
-  animation-duration: 2s;
-  animation-direction: alternate;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
+  .animated-button {
+    animation-name: move-button;
+    animation-duration: 2s;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes move-button {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(5px);
+    }
+  }
+
+
+  .jump-span {
+    animation: jump 0.3s ease-in-out infinite;
+  }
+
+  @keyframes jump {
+    0% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-2px);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .wave-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .wave-button {
+    animation: wave 1s ease-in-out infinite;
+    margin: 10px;
+  }
+
+  @keyframes wave {
+    0% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+
+  .grow-shake-button {
+    animation: grow-shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+    transform-origin: center;
+  }
+
+  @keyframes grow-shake {
+    0% {
+      transform: scale(1);
+    }
+
+    25% {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    50% {
+      transform: scale(1);
+    }
+
+    75% {
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+
+  .grow-shake-slow-button {
+    animation: grow-shake-slow 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+    transform-origin: center;
+  }
+
+  @keyframes grow-shake-slow {
+    0% {
+      transform: scale(1);
+    }
+
+    25% {
+      transform: scale(1.05) rotate(3deg);
+    }
+
+    50% {
+      transform: scale(1);
+    }
+
+    75% {
+      transform: scale(1.05) rotate(-3deg);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+
+  .miInput {
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .correcto {
+    content: "\2714";
+    /* Código Unicode para la palomita */
+    color: green;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .miInput.incorrecto::after {
+    content: "\2716";
+    /* Código Unicode para la "X" */
+    color: red;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  input {
+    content: "\2714";
+  }
+
+  .input-correcto:valid::after {
+  content: "✔";
+  color: green;
 }
 
-@keyframes move-button {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(5px);
-  }
+.input-correcto:invalid::after {
+  content: "✘";
+  color: red;
 }
-
-
-.jump-span {
-  animation: jump 0.3s ease-in-out infinite;
-}
-
-@keyframes jump {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-2px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.wave-container {
-  display: flex;
-  justify-content: center;
-}
-
-.wave-button {
-  animation: wave 1s ease-in-out infinite;
-  margin: 10px;
-}
-
-@keyframes wave {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-
-.grow-shake-button {
-  animation: grow-shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
-  transform-origin: center;
-}
-
-@keyframes grow-shake {
-  0% {
-    transform: scale(1);
-  }
-  25% {
-    transform: scale(1.1) rotate(5deg);
-  }
-  50% {
-    transform: scale(1);
-  }
-  75% {
-    transform: scale(1.1) rotate(-5deg);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-
-.grow-shake-slow-button {
-  animation: grow-shake-slow 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
-  transform-origin: center;
-}
-
-@keyframes grow-shake-slow {
-  0% {
-    transform: scale(1);
-  }
-  25% {
-    transform: scale(1.05) rotate(3deg);
-  }
-  50% {
-    transform: scale(1);
-  }
-  75% {
-    transform: scale(1.05) rotate(-3deg);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 
 </style>
+
 <body>
-    <span class="draggable" draggable="true">Valor 1</span>
-<span class="draggable" draggable="true">Valor 2</span>
-<span class="draggable" draggable="true">Valor 3</span>
-<input type="text" id="myInput">
+  <span class="draggable" draggable="true">Valor 1</span>
+  <span class="draggable" draggable="true">Valor 2</span>
+  <span class="draggable" draggable="true">Valor 3</span>
+  <input type="text" id="myInput">
 
-<button class="animated-button">Haz clic aquí</button>
+  <button class="animated-button">Haz clic aquí</button>
 
-<button class="jump-span">Haz clic aquí</button>
+  <button class="jump-span">Haz clic aquí</button>
 
-<button class="grow-shake-button">Haz clic aquí</button>
+  <button class="grow-shake-button">Haz clic aquí</button>
 
-<button class="grow-shake-slow-button">Haz clic aquí</button>
+  <button class="grow-shake-slow-button">Haz clic aquí</button>
 
 
-<div class="wave-container">
+
+  <div class="wave-container">
     <button class="wave-button">Botón 1</button>
     <button class="wave-button">Botón 2</button>
     <button class="wave-button">Botón 3</button>
   </div>
+  <input type="text" value="" id="miInput" class="">
 
-<script>
+  <label for="input-ejemplo">Ejemplo:</label>
+<input type="text" id="input-ejemplo" class="input-correcto" required>
+
+
+  <script>
     var input = document.getElementById("myInput");
 
-// Agregar un event listener para el evento 'dragstart'
-document.addEventListener("dragstart", function(event) {
-  // Establecer el elemento arrastrado como el elemento 'span' que se ha iniciado el arrastre
-  event.dataTransfer.setData("text", event.target.innerText);
-});
+    // Agregar un event listener para el evento 'dragstart'
+    document.addEventListener("dragstart", function (event) {
+      // Establecer el elemento arrastrado como el elemento 'span' que se ha iniciado el arrastre
+      event.dataTransfer.setData("text", event.target.innerText);
+    });
 
-// Agregar un event listener para el evento 'dragover'
-input.addEventListener("dragover", function(event) {
-  // Evitar el comportamiento predeterminado del navegador al arrastrar y soltar
-  event.preventDefault();
-});
+    // Agregar un event listener para el evento 'dragover'
+    input.addEventListener("dragover", function (event) {
+      // Evitar el comportamiento predeterminado del navegador al arrastrar y soltar
+      event.preventDefault();
+    });
 
-// Agregar un event listener para el evento 'drop'
-input.addEventListener("drop", function(event) {
-  // Evitar el comportamiento predeterminado del navegador al arrastrar y soltar
-  event.preventDefault();
+    // Agregar un event listener para el evento 'drop'
+    input.addEventListener("drop", function (event) {
+      // Evitar el comportamiento predeterminado del navegador al arrastrar y soltar
+      event.preventDefault();
 
-  // Obtener el valor del elemento arrastrado
-  var value = event.dataTransfer.getData("text");
-  this.value = value    
+      // Obtener el valor del elemento arrastrado
+      var value = event.dataTransfer.getData("text");
+      this.value = value
 
-});
+    });
 
-</script>
+  </script>
 </body>
+
 </html>

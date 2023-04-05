@@ -143,7 +143,7 @@ function selectedWord(id) {
 }
 
 function answerWordColumns(obj) {
-console.log(obj.value);
+  console.log(obj.getAttribute('answer'));
 
 }
 
@@ -225,6 +225,7 @@ function startIrregularVerbs() {
   fetch('./irregular-verbs.json')
     .then(response => response.json())
     .then(data => {
+      bodyTable.innerHTML = "";
       data.verbs.forEach(function (verb, index) {
         let row = document.createElement("tr");
         let cell1 = document.createElement("td");
@@ -254,7 +255,12 @@ function testWordColums() {
 
   for (let arr of rows) {
     for (let i = 0; i < rows[0].children.length; i++) {
-      arr.children[i].innerHTML = `<input type='text' answer='${arr.children[i].innerHTML}' onfocusout="answerWordColumns(this)"  />`
+      arr.children[i].innerHTML = `<div class="input-container">
+                                    <input style="width:100px" type="text" answer='${arr.children[i].innerHTML}' onfocusout="answerWordColumns(this)" placeholder="Escribe aquí...">
+                                    <div class="icon-container">
+                                      <i class="incorrect"></i>
+                                    </div>
+                                  </div>`
     }
   }
 }
