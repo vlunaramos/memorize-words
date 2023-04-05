@@ -143,7 +143,13 @@ function selectedWord(id) {
 }
 
 function answerWordColumns(obj) {
-  console.log(obj.getAttribute('answer'));
+  console.log(obj.id)
+  let answer = document.getElementById(obj.id + '_result');
+  if (obj.getAttribute('answer') == obj.value && obj.value != "") {
+    answer.className = 'correct';
+  } else {
+    answer.className = 'incorrect';
+  }
 
 }
 
@@ -210,7 +216,6 @@ function addEventListenerDropToInput() {
   let element = document.getElementById("testForm");
   let arrayInput = element.getElementsByTagName("input");
 
-
   for (let input of arrayInput) {
     draggable(input.id);
   }
@@ -256,9 +261,9 @@ function testWordColums() {
   for (let arr of rows) {
     for (let i = 0; i < rows[0].children.length; i++) {
       arr.children[i].innerHTML = `<div class="input-container">
-                                    <input style="width:100px" type="text" answer='${arr.children[i].innerHTML}' onfocusout="answerWordColumns(this)" placeholder="Escribe aquí...">
+                                    <input id='${arr.children[i].id}' style="width:100px" type="text" answer='${arr.children[i].innerHTML}' onfocusout="answerWordColumns(this)" placeholder="${arr.children[i].innerHTML.substring(0, 3)}">
                                     <div class="icon-container">
-                                      <i class="incorrect"></i>
+                                      <i id='${arr.children[i].id}_result' class=""></i>
                                     </div>
                                   </div>`
     }
