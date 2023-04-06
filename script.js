@@ -256,7 +256,7 @@ function testWordColums() {
     if (arr.id != "row-header")
       for (let i = 1; i < rows[0].children.length; i++) {
         arr.children[i].innerHTML = `<div class="input-container">
-                                    <input id='${arr.children[i].id}' style="width:100px" type="text" answer='${arr.children[i].innerHTML}' onfocusout="answerWordColumns(this)" placeholder="${arr.children[i].innerHTML.substring(0, 3)}">
+                                    <input class="text-lowercase" id='${arr.children[i].id}' style="width:100px" type="text" answer='${arr.children[i].innerHTML}' onfocusout="answerWordColumns(this)" placeholder="${arr.children[i].innerHTML.substring(0, 3)}">
                                     <div class="icon-container">
                                       <i id='${arr.children[i].id}_result' class=""></i>
                                     </div>
@@ -267,7 +267,7 @@ function testWordColums() {
 
 function answerWordColumns(obj) {
   let answer = document.getElementById(obj.id + '_result');
-  if (obj.getAttribute('answer') == obj.value && obj.value != "") {
+  if (obj.getAttribute('answer').toLowerCase().trim() == obj.value.toLowerCase().trim() && obj.value != "") {
     answer.className = 'correct';
     checkRowCorrect(obj.parentNode.parentNode.parentNode)
   } else {
