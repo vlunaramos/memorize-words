@@ -251,16 +251,17 @@ function startIrregularVerbs() {
 function testWordColums() {
   let table = document.getElementById("word-colum");
   let rows = table.getElementsByTagName('tr')
-
+  console.log(rows);
   for (let arr of rows) {
-    for (let i = 0; i < rows[0].children.length; i++) {
-      arr.children[i].innerHTML = `<div class="input-container">
+    if (arr.id != "row-header")
+      for (let i = 1; i < rows[0].children.length; i++) {
+        arr.children[i].innerHTML = `<div class="input-container">
                                     <input id='${arr.children[i].id}' style="width:100px" type="text" answer='${arr.children[i].innerHTML}' onfocusout="answerWordColumns(this)" placeholder="${arr.children[i].innerHTML.substring(0, 3)}">
                                     <div class="icon-container">
                                       <i id='${arr.children[i].id}_result' class=""></i>
                                     </div>
                                   </div>`
-    }
+      }
   }
 }
 
@@ -269,9 +270,12 @@ function answerWordColumns(obj) {
   if (obj.getAttribute('answer') == obj.value && obj.value != "") {
     answer.className = 'correct';
   } else {
-    answer.className = 'incorrect';
-    saveIncorrectRows(obj.parentNode.parentNode.parentNode);
-    saveIncorrectWordColumn(obj.parentNode.parentNode);
+    if (obj.value && obj.value != "") {
+      answer.className = 'incorrect';
+      saveIncorrectRows(obj.parentNode.parentNode.parentNode);
+      saveIncorrectWordColumn(obj.parentNode.parentNode);
+    }
+
   }
 }
 
@@ -290,7 +294,6 @@ function saveIncorrectWordColumn(td) {
   }
 
   displayIncorrectWords();
-
 }
 
 function displayIncorrectWords() {
