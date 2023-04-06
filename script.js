@@ -282,6 +282,7 @@ function saveIncorrectRows(row) {
 }
 
 function saveIncorrectWordColumn(td) {
+  console.log(td);
   incorrectWordsofWordColumn.push(td);
   displayIncorrectWords();
 
@@ -291,7 +292,7 @@ function displayIncorrectWords(){
   let display = document.getElementById('displayIncorrectWords');
   let toInner = "";
   for (let i = 0; i < incorrectWordsofWordColumn.length; i++) {
-    let input = incorrectRowWordsColumn[i].getElementsByTagName('input')
+    let input = incorrectWordsofWordColumn[i].getElementsByTagName('input')
     toInner += `<span class="rounded-3 p-2 mt-2 mb-2 me-2 text-white grow-shake-slow-button" draggable="true" style="background-color: rgb(170, 150, 218)" id="span_${i}">${input[0].getAttribute('answer')}</span>`;
   }
   display.innerHTML = toInner;
