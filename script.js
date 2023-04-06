@@ -300,7 +300,11 @@ function checkRowCorrect(row) {
   }
 
   if (result) {
-    row.remove();
+
+    row.className = "table-success disappearing";
+    setTimeout(function () {
+      row.hidden = true;
+    }, 3000);
   }
 
 }
