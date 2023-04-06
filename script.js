@@ -273,7 +273,7 @@ function answerWordColumns(obj) {
   } else {
     if (obj.value && obj.value != "") {
       answer.className = 'incorrect';
-
+      document.getElementById("list-incorrect-words").hidden = false;
       saveIncorrectRows(obj.parentNode.parentNode.parentNode);
       saveIncorrectWordColumn(obj.parentNode.parentNode);
     }
@@ -296,7 +296,10 @@ function checkRowCorrect(row) {
   for (let i = 0; i < arrayInputs.length; i++) {
     if (arrayInputs[i].getAttribute('answer').toLowerCase().trim() == arrayInputs[i].value.toLowerCase().trim()) {
       result = true;
-    } else { result = false; break; }
+    } else { 
+      result = false; 
+      
+      break; }
   }
 
   if (result) {
