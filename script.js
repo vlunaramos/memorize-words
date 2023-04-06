@@ -251,7 +251,7 @@ function startIrregularVerbs() {
 function testWordColums() {
   let table = document.getElementById("word-colum");
   let rows = table.getElementsByTagName('tr')
-  console.log(rows);
+
   for (let arr of rows) {
     if (arr.id != "row-header")
       for (let i = 1; i < rows[0].children.length; i++) {
@@ -269,9 +269,11 @@ function answerWordColumns(obj) {
   let answer = document.getElementById(obj.id + '_result');
   if (obj.getAttribute('answer') == obj.value && obj.value != "") {
     answer.className = 'correct';
+    checkRowCorrect(obj.parentNode.parentNode.parentNode)
   } else {
     if (obj.value && obj.value != "") {
       answer.className = 'incorrect';
+
       saveIncorrectRows(obj.parentNode.parentNode.parentNode);
       saveIncorrectWordColumn(obj.parentNode.parentNode);
     }
@@ -285,6 +287,22 @@ function saveIncorrectRows(row) {
   for (let i = 0; i < incorrectRowWordsColumn[0].children.length; i++) {
 
   }
+}
+
+function checkRowCorrect(row) {
+
+  let arrayInputs = row.getElementsByTagName('input');
+  let result = null;
+  for (let i = 1; i < arrayInputs.length; i++) {
+    if (arrayInputs[i].getAttribute('answer') == arrayInputs[i].value) {
+      result = true;
+    } else result = false;
+  }
+
+  if (result) {
+    row.remove();
+  }
+
 }
 
 function saveIncorrectWordColumn(td) {
