@@ -294,7 +294,7 @@ function checkRowCorrect(row) {
   let arrayInputs = row.getElementsByTagName('input');
   let result = null;
   for (let i = 0; i < arrayInputs.length; i++) {
-    if (arrayInputs[i].getAttribute('answer') == arrayInputs[i].value) {
+    if (arrayInputs[i].getAttribute('answer').toLowerCase().trim() == arrayInputs[i].value.toLowerCase().trim()) {
       result = true;
     } else { result = false; break; }
   }
