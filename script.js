@@ -300,7 +300,7 @@ function checkRowCorrect(row) {
   }
 
   if (result) {
-    const audio = new Audio('success.mp3');
+    const audio = new Audio('yamate-kudesai.mp3');
     audio.play();
     row.className = "table-success disappearing";
     setTimeout(function () {
