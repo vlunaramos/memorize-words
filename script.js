@@ -293,10 +293,10 @@ function checkRowCorrect(row) {
 
   let arrayInputs = row.getElementsByTagName('input');
   let result = null;
-  for (let i = 1; i < arrayInputs.length; i++) {
+  for (let i = 0; i < arrayInputs.length; i++) {
     if (arrayInputs[i].getAttribute('answer') == arrayInputs[i].value) {
       result = true;
-    } else result = false;
+    } else { result = false; break; }
   }
 
   if (result) {
@@ -304,7 +304,7 @@ function checkRowCorrect(row) {
     row.className = "table-success disappearing";
     setTimeout(function () {
       row.hidden = true;
-    }, 3000);
+    }, 1500);
   }
 
 }
