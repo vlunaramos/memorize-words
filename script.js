@@ -2,6 +2,8 @@ var listWords = [];
 var paragraphText = "";
 var totalWords = 0;
 var words = [];
+var incorrectRowWordsColumn = [];
+var incorrectWordsofWordColumn = [];
 
 function stringToArray(str) {
   // Convertir el string en un array de caracteres utilizando el método split
@@ -142,17 +144,6 @@ function selectedWord(id) {
   }
 }
 
-function answerWordColumns(obj) {
-  console.log(obj.id)
-  let answer = document.getElementById(obj.id + '_result');
-  if (obj.getAttribute('answer') == obj.value && obj.value != "") {
-    answer.className = 'correct';
-  } else {
-    answer.className = 'incorrect';
-  }
-
-}
-
 function checkAnswer() {
   let score = 0;
   let correctAnswer = 0;
@@ -224,7 +215,7 @@ function addEventListenerDropToInput() {
 
 function startIrregularVerbs() {
   let tableRow = document.getElementById("word-colum");
-  let bodyTable = document.getElementsByTagName('tbody')
+  let bodyTable = tableRow.getElementsByTagName('tbody')
   bodyTable = bodyTable[0]
 
   fetch('./irregular-verbs.json')
@@ -233,6 +224,7 @@ function startIrregularVerbs() {
       bodyTable.innerHTML = "";
       data.verbs.forEach(function (verb, index) {
         let row = document.createElement("tr");
+        row.id = "word-row_" + index;
         let cell1 = document.createElement("td");
         cell1.setAttribute("id", "infinitive_" + index);
         let cell2 = document.createElement("td");
@@ -268,6 +260,41 @@ function testWordColums() {
                                   </div>`
     }
   }
+}
+
+function answerWordColumns(obj) {
+  let answer = document.getElementById(obj.id + '_result');
+  if (obj.getAttribute('answer') == obj.value && obj.value != "") {
+    answer.className = 'correct';
+  } else {
+    answer.className = 'incorrect';
+    saveIncorrectRows(obj.parentNode.parentNode.parentNode);
+    saveIncorrectWordColumn(obj.parentNode.parentNode);
+  }
+}
+
+function saveIncorrectRows(row) {
+  incorrectRowWordsColumn.push(row);
+
+  for (let i = 0; i < incorrectRowWordsColumn[0].children.length; i++) {
+
+  }
+}
+
+function saveIncorrectWordColumn(td) {
+  incorrectWordsofWordColumn.push(td);
+  displayIncorrectWords();
+
+}
+
+function displayIncorrectWords(){
+  let display = document.getElementById('displayIncorrectWords');
+  let toInner = "";
+  for (let i = 0; i < incorrectWordsofWordColumn.length; i++) {
+    let input = incorrectRowWordsColumn[i].getElementsByTagName('input')
+    toInner += `<span class="rounded-3 p-2 mt-2 mb-2 me-2 text-white grow-shake-slow-button" draggable="true" style="background-color: rgb(170, 150, 218)" id="span_${i}">${input[0].getAttribute('answer')}</span>`;
+  }
+  display.innerHTML = toInner;
 }
 
 function init() {
