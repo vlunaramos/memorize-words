@@ -214,6 +214,8 @@ function addEventListenerDropToInput() {
 }
 
 function startIrregularVerbs() {
+  incorrectWordsofWordColumn = [];
+  displayIncorrectWords();
   let tableRow = document.getElementById("word-colum");
   let bodyTable = tableRow.getElementsByTagName('tbody')
   bodyTable = bodyTable[0]
@@ -282,13 +284,16 @@ function saveIncorrectRows(row) {
 }
 
 function saveIncorrectWordColumn(td) {
-  console.log(td);
-  incorrectWordsofWordColumn.push(td);
+
+  if (!incorrectWordsofWordColumn.some(element => element == td)) {
+    incorrectWordsofWordColumn.push(td);
+  }
+
   displayIncorrectWords();
 
 }
 
-function displayIncorrectWords(){
+function displayIncorrectWords() {
   let display = document.getElementById('displayIncorrectWords');
   let toInner = "";
   for (let i = 0; i < incorrectWordsofWordColumn.length; i++) {
