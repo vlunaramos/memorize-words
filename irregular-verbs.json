@@ -12,13 +12,13 @@
         },
         {
             "Base": "be",
-            "Past-simple": "was/were",
+            "Past-simple": "was were",
             "Past-Participle": "been"
         },
         {
             "Base": "bear",
             "Past-simple": "bore",
-            "Past-Participle": "born(e)"
+            "Past-Participle": "born"
         },
         {
             "Base": "beat",
@@ -92,8 +92,8 @@
         },
         {
             "Base": "burn",
-            "Past-simple": "burnt/burned",
-            "Past-Participle": "burnt/burned"
+            "Past-simple": "burned",
+            "Past-Participle": "burned"
         },
         {
             "Base": "burst",

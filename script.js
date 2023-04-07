@@ -338,8 +338,16 @@ function displayIncorrectWords() {
 }
 
 function reproduceVoice(string) {
-  let utterance = new SpeechSynthesisUtterance(string);
-  speechSynthesis.speak(utterance);
+  if ('speechSynthesis' in window) {
+    let utterance = new SpeechSynthesisUtterance(string);
+    utterance.pitch = 0.97;
+    utterance.lang = "en-US";
+    speechSynthesis.speak(utterance);
+  } else {
+    //El navegador es antiguo. Camino alternativo
+    // Tal vez mostrar una versión reducida o un cartel de información
+    alert('Actualízate!');
+  }
 }
 
 function init() {
@@ -356,6 +364,7 @@ function init() {
   });
 
 }
+
 
 init();
 
