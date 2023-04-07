@@ -272,12 +272,14 @@ function answerWordColumns(obj) {
   if (obj.getAttribute('answer').toLowerCase().trim() == obj.value.toLowerCase().trim() && obj.value != "") {
     answer.className = 'correct';
     checkRowCorrect(obj.parentNode.parentNode.parentNode)
+    reproduceVoice(obj.getAttribute("answer"));
   } else {
     if (obj.value && obj.value != "") {
       answer.className = 'incorrect';
       document.getElementById("list-incorrect-words").hidden = false;
       saveIncorrectRows(obj.parentNode.parentNode.parentNode);
       saveIncorrectWordColumn(obj.parentNode.parentNode);
+      reproduceVoice(obj.getAttribute("answer"));
     }
 
   }
@@ -330,9 +332,14 @@ function displayIncorrectWords() {
   let toInner = "";
   for (let i = 0; i < incorrectWordsofWordColumn.length; i++) {
     let input = incorrectWordsofWordColumn[i].getElementsByTagName('input')
-    toInner += `<span class="rounded-3 p-2 mt-2 mb-2 me-2 text-white grow-shake-slow-button" draggable="true" style="background-color: rgb(170, 150, 218)" id="span_${i}">${input[0].getAttribute('answer')}</span>`;
+    toInner += `<span onclick="reproduceVoice(this.innerHTML)" class="rounded-3 p-2 mt-2 mb-2 me-2 text-white grow-shake-slow-button" draggable="true" style="background-color: rgb(170, 150, 218)" id="span_${i}">${input[0].getAttribute('answer')}</span>`;
   }
   display.innerHTML = toInner;
+}
+
+function reproduceVoice(string) {
+  let utterance = new SpeechSynthesisUtterance(string);
+  speechSynthesis.speak(utterance);
 }
 
 function init() {
