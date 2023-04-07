@@ -162,6 +162,8 @@ function checkAnswer() {
   score = (correctAnswer / span.length) * 10;
   document.getElementById('totalScore').innerHTML = 'Your score was ' + score;
   if (score >= 8) {
+    const audio = new Audio('correct-answer-sound.mp3');
+    audio.play();
     player.play();
   }
 }
@@ -296,14 +298,15 @@ function checkRowCorrect(row) {
   for (let i = 0; i < arrayInputs.length; i++) {
     if (arrayInputs[i].getAttribute('answer').toLowerCase().trim() == arrayInputs[i].value.toLowerCase().trim()) {
       result = true;
-    } else { 
-      result = false; 
-      
-      break; }
+    } else {
+      result = false;
+
+      break;
+    }
   }
 
   if (result) {
-    const audio = new Audio('yamate-kudesai.mp3');
+    const audio = new Audio('correct-answer-sound.mp3');
     audio.play();
     row.className = "table-success disappearing";
     setTimeout(function () {
