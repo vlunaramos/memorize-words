@@ -1,0 +1,135 @@
+p {
+    color: black;
+}
+
+span,
+label {
+    margin-right: 2px;
+
+}
+
+.input-field {
+    margin-right: 5px;
+    max-width: 70px;
+    max-height: 20px;
+}
+
+.nav-custom {
+    background-color: rgb(142, 167, 233)
+}
+
+@media (max-width: 768px) {
+    .logo-inventif {
+        max-width: 90px;
+    }
+}
+
+@media (min-width: 769px) {
+    .logo-inventif {
+        max-width: 150px;
+    }
+}
+
+.grow-shake-slow-button {
+    animation: grow-shake-slow 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+    transform-origin: center;
+}
+
+@keyframes grow-shake-slow {
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.05) rotate(3deg);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.05) rotate(-3deg);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.droptarget {
+    width: 100px;
+    height: 35px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+/*     table td {
+      position: relative;
+    }
+
+
+    table td input {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      border: none;
+      padding: 10px;
+      box-sizing: border-box;
+    } */
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid #ccc; */
+    padding: 5px;
+    width: 130px;
+}
+
+.icon-container {
+    font-size: 24px;
+    color: green;
+}
+
+.correct:after {
+    content: "✔";
+    color: green;
+}
+
+.incorrect:after {
+    content: "✘";
+    color: red;
+}
+
+/* CARTAS */
+.hand {
+    display: flex;
+}
+
+.card {
+    width: 100px;
+    height: 150px;
+    background-color: white;
+    border: 1px solid black;
+    margin-right: -50px;
+    transition: transform 0.5s;
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+/* desparecer rila */
+.disappearing {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+
+
+    /* graficos de ciruculo */
+
+}

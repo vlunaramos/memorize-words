@@ -13,180 +13,20 @@
     <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
       integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/charts.css">
+
+
   </head>
 
-  <style>
-    span,
-    label {
-      margin-right: 2px;
+  <nav class="navbar navbar-expand-sm" w3-include-html="nav.html">
 
-    }
-
-    .input-field {
-      margin-right: 5px;
-      max-width: 70px;
-      max-height: 20px;
-    }
-
-    .nav-custom {
-      background-color: rgb(142, 167, 233)
-    }
-
-    @media (max-width: 768px) {
-      .logo-inventif {
-        max-width: 90px;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .logo-inventif {
-        max-width: 150px;
-      }
-    }
-
-    .grow-shake-slow-button {
-      animation: grow-shake-slow 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
-      transform-origin: center;
-    }
-
-    @keyframes grow-shake-slow {
-      0% {
-        transform: scale(1);
-      }
-
-      25% {
-        transform: scale(1.05) rotate(3deg);
-      }
-
-      50% {
-        transform: scale(1);
-      }
-
-      75% {
-        transform: scale(1.05) rotate(-3deg);
-      }
-
-      100% {
-        transform: scale(1);
-      }
-    }
-
-    .droptarget {
-      width: 100px;
-      height: 35px;
-      padding: 10px;
-      border: 1px solid black;
-    }
-
-    /*     table td {
-      position: relative;
-    }
-
-
-    table td input {
-      position: absolute;
-      display: block;
-      top: 0;
-      left: 0;
-      margin: 0;
-      height: 100%;
-      width: 100%;
-      border: none;
-      padding: 10px;
-      box-sizing: border-box;
-    } */
-
-    .input-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      /* border: 1px solid #ccc; */
-      padding: 5px;
-      width: 130px;
-    }
-
-    .icon-container {
-      font-size: 24px;
-      color: green;
-    }
-
-    .correct:after {
-      content: "✔";
-      color: green;
-    }
-
-    .incorrect:after {
-      content: "✘";
-      color: red;
-    }
-
-    /* CARTAS */
-    .hand {
-      display: flex;
-    }
-
-    .card {
-      width: 100px;
-      height: 150px;
-      background-color: white;
-      border: 1px solid black;
-      margin-right: -50px;
-      transition: transform 0.5s;
-    }
-
-    .card:hover {
-      transform: rotateY(180deg);
-    }
-
-    /* desparecer rila */
-    .disappearing {
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-  </style>
-
-  <nav class="navbar navbar-expand-sm">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="images/mw-logo-violet.png" alt="" width="60" height="60" class="d-inline-block align-text-top">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <!--  <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">HOME</a></li>
-              <li><a class="dropdown-item" href="#">Another link</a></li>
-              <li><a class="dropdown-item" href="#">A third link</a></li>
-            </ul>
-          </li> -->
-        </ul>
-      </div>
-    </div>
   </nav>
 
   <div class="container mt-5">
-    <nav>
-      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
-          role="tab" aria-controls="nav-home" aria-selected="true">Words for each gap</button>
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
-          role="tab" aria-controls="nav-profile" aria-selected="false">Word Columns</button>
-        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
-          role="tab" aria-controls="nav-contact" aria-selected="false">Flashcards</button>
-      </div>
+    <nav w3-include-html="nav-tabs.html">
+
     </nav>
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -198,10 +38,7 @@
             <button class="btn float-end" style="border-style: solid; border-color: rgba(231,43,117,255);"
               onclick="paragraphHide()">Show Text</button>
           </div>
-
-
         </div>
-
         <textarea class="form-control my-3" style="border-style: solid; border-color: rgb(191, 172, 226);" name="
           paragraph" id="paragraph" onfocusout="paragraphOnFocusOut()" cols="30" rows="10"></textarea>
         <div class="row align-items-end">
@@ -234,6 +71,143 @@
       </div>
       <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
         <div class="container">
+          <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <!-- DONUT CHART BLOCK (LEFT-CONTAINER) -->
+                <div class="donut-chart-block block">
+                  <h2 class="titular">OS AUDIENCE STATS</h2>
+                  <div class="donut-chart">
+                    <!-- PORCIONES GRAFICO CIRCULAR ELIMINADO #donut-chart MODIFICADO CSS de .donut-chart -->
+                    <div id="porcion1" class="recorte">
+                      <div class="quesito ios" data-rel="21"></div>
+                    </div>
+                    <div id="porcion2" class="recorte">
+                      <div class="quesito mac" data-rel="39"></div>
+                    </div>
+                    <div id="porcion3" class="recorte">
+                      <div class="quesito win" data-rel="31"></div>
+                    </div>
+                    <div id="porcionFin" class="recorte">
+                      <div class="quesito linux" data-rel="9"></div>
+                    </div>
+                    <!-- FIN AÑADIDO GRÄFICO -->
+                    <p class="center-date">JUNE<br><span class="scnd-font-color">2013</span></p>
+                  </div>
+                  <ul class="os-percentages horizontal-list">
+                    <li>
+                      <p class="ios os scnd-font-color">iOS</p>
+                      <p class="os-percentage">21<sup>%</sup></p>
+                    </li>
+                    <li>
+                      <p class="mac os scnd-font-color">Mac</p>
+                      <p class="os-percentage">39<sup>%</sup></p>
+                    </li>
+                    <li>
+                      <p class="linux os scnd-font-color">Linux</p>
+                      <p class="os-percentage">9<sup>%</sup></p>
+                    </li>
+                    <li>
+                      <p class="win os scnd-font-color">Win</p>
+                      <p class="os-percentage">31<sup>%</sup></p>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+              <div class="carousel-item">
+                <!-- LINE CHART BLOCK (LEFT-CONTAINER) -->
+                <div class="line-chart-block block">
+                  <div class="line-chart">
+                    <div class='grafico'>
+                      <ul class='eje-y'>
+                        <li data-ejeY='30'></li>
+                        <li data-ejeY='20'></li>
+                        <li data-ejeY='10'></li>
+                        <li data-ejeY='0'></li>
+                      </ul>
+                      <ul class='eje-x'>
+                        <li>Apr</li>
+                        <li>May</li>
+                        <li>Jun</li>
+                      </ul>
+                      <span data-valor='25'>
+                        <span data-valor='8'>
+                          <span data-valor='13'>
+                            <span data-valor='5'>
+                              <span data-valor='23'>
+                                <span data-valor='12'>
+                                  <span data-valor='15'>
+                                  </span></span></span></span></span></span></span>
+                    </div>
+
+                  </div>
+                  <ul class="time-lenght horizontal-list">
+                    <li><a class="time-lenght-btn" href="#14">Week</a></li>
+                    <li><a class="time-lenght-btn" href="#15">Month</a></li>
+                    <li><a class="time-lenght-btn" href="#16">Year</a></li>
+                  </ul>
+                  <ul class="month-data clear">
+                    <li>
+                      <p>APR<span class="scnd-font-color"> 2013</span></p>
+                      <p><span class="entypo-plus increment"> </span>21<sup>%</sup></p>
+                    </li>
+                    <li>
+                      <p>MAY<span class="scnd-font-color"> 2013</span></p>
+                      <p><span class="entypo-plus increment"> </span>48<sup>%</sup></p>
+                    </li>
+                    <li>
+                      <p>JUN<span class="scnd-font-color"> 2013</span></p>
+                      <p><span class="entypo-plus increment"> </span>35<sup>%</sup></p>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+              <div class="carousel-item">
+                <div class="bar-chart-block block">
+                  <h2 class='titular'>By Country <span>*1000</span></h2>
+                  <div class='grafico bar-chart'>
+                    <ul class='eje-y'>
+                      <li data-ejeY='60'></li>
+                      <li data-ejeY='45'></li>
+                      <li data-ejeY='30'></li>
+                      <li data-ejeY='15'></li>
+                      <li data-ejeY='0'></li>
+                    </ul>
+                    <ul class='eje-x'>
+                      <li data-ejeX='37'><i>España</i></li>
+                      <li data-ejeX='56'><i>Portugal</i></li>
+                      <li data-ejeX='25'><i>Italia</i></li>
+                      <li data-ejeX='18'><i>Grecia</i></li>
+                      <li data-ejeX='45'><i>EE.UU</i></li>
+                      <li data-ejeX='50'><i>México</i></li>
+                      <li data-ejeX='33'><i>Chile</i></li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
           <div class="row">
             <div class="row my-3">
               <div class="col-sm-9">
@@ -251,7 +225,6 @@
               <div class="d-flex flex-wrap mt-2 p-2 rounded-3" id="displayIncorrectWords"
                 style="border-style: solid; border-color: rgb(191, 172, 226); background-color: rgb(235, 199, 230);">
               </div>
-
             </div>
             <table id="word-colum" class="p-left-3 table mt-3 col-12 table-striped table-responsive table-sm">
               <thead>
@@ -265,6 +238,44 @@
               </tbody>
             </table>
           </div>
+        </div>
+        <div class="row my-3">
+          <div class="col-sm-9">
+            <p class="h5" id="headerInstruction" class="float-start">Paste your text and generate the gaps</hp>
+          </div>
+          <div class="col-sm-3">
+            <button class="btn float-end" style="border-style: solid; border-color: rgba(231,43,117,255);"
+              onclick="paragraphHide()">Show Text</button>
+          </div>
+        </div>
+        <textarea class="form-control my-3" style="border-style: solid; border-color: rgb(191, 172, 226);" name="
+    paragraph" id="paragraph" onfocusout="paragraphOnFocusOut()" cols="30" rows="10"></textarea>
+        <div class="row align-items-end">
+          <div class="col-sm-2">
+            <p>Total Words</p>
+            <input class="form-control" type="number" id="totalwords" readonly />
+          </div>
+          <div class="col-sm-3">
+            <p>Words To Take Random Sort</p>
+            <input class="form-control" type="number" id="numWordsToProcess" pattern="[0-9]+" min="1" value="5"
+              required />
+          </div>
+          <div class="col">
+            <div class="d-flex justify-content-end">
+              <div class="mt-2">
+                <button class="btn text-white" style="background-color: rgb(170, 150, 218)" id="action"
+                  onclick="randomWords()">Random</button>
+                <button class="btn text-white" style="background-color: rgb(170, 150, 218)" id="generateTest"
+                  onclick="generateTest()">Generate Test</button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="d-flex flex-wrap mt-2 p-2 rounded-3" id="displayWords"
+          style="border-style: solid; border-color: rgb(191, 172, 226); background-color: rgb(235, 199, 230);"></div>
+        <div class="mt-2 p-2 rounded-3" id="formSection" style="border-style: solid; border-color: rgb(191, 172, 226)">
         </div>
       </div>
       <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
@@ -282,28 +293,9 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body row">
-            <div class="col-12 d-flex justify-content-center">
-              <lottie-player class="position-absolute" id="confetti"
-                src="https://assets2.lottiefiles.com/private_files/lf30_f495l0im.json" background="transparent"
-                speed="1" loop></lottie-player>
-              <img src="images/mw-full-logo-violet.png" alt="" style="width:55%;height:auto;">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+      w3-include-html="modal.html">
 
-            </div>
-            <h3 class="col mt-3" id="totalScore" align="center">Score: 0</h3>
-          </div>
-          <div class=" modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -313,7 +305,7 @@
   </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="javascript/script.js"></script>
 </body>
 
 </html>

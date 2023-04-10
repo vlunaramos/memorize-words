@@ -1,0 +1,36 @@
+<div class="container">
+    <!-- <div class="container" w3-include-html="charts.html"> -->
+
+
+    <div class="row">
+        <div class="row my-3">
+            <div class="col-sm-9">
+                <p class="h5" id="headerInstruction" class="float-start">Write each word in each tense</hp>
+            </div>
+            <div class="col-sm-3">
+                <button class="btn float-end" style="border-style: solid; border-color: rgba(231,43,117,255);"
+                    onclick="startIrregularVerbs()">Start</button>
+                <button class="btn float-end ms-2" style="border-style: solid; border-color: rgba(231,43,117,255);"
+                    onclick="testWordColums()">Test</button>
+            </div>
+        </div>
+        <div id="list-incorrect-words" hidden>
+            <p>Incorrect Words</p>
+            <div class="d-flex flex-wrap mt-2 p-2 rounded-3" id="displayIncorrectWords"
+                style="border-style: solid; border-color: rgb(191, 172, 226); background-color: rgb(235, 199, 230);">
+            </div>
+
+        </div>
+        <table id="word-colum" class="p-left-3 table mt-3 col-12 table-striped table-responsive table-sm">
+            <thead>
+                <tr id="row-header">
+                    <th scope="col">Ininitive</th>
+                    <th scope="col">Past Simple</th>
+                    <th scope="col">Past Participle</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
